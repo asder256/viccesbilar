@@ -19,11 +19,11 @@
             'BMW M3', 'Audi A4', 'Mercedes C-Class', 'Volkswagen Golf', 'Mazda 3',
             'Nissan Altima', 'Hyundai Elantra', 'Kia Optima', 'Subaru Impreza', 'Volvo S60'
         ];
-        const npcNames = ['Olle', 'Beatrice', 'Hank', 'Algot', 'Danne', 'Adde', 'Agge', 'Matilda'];
-        const maxNPCs = 5;
-        const answerDuration = 5000; // 5 seconds
-        const questionDuration = 2000; // 2 seconds
-        const npcLifespan = 15000; // 15 seconds
+        const npcNames = ['Olle', 'Beatrice', 'Hank', 'Algot', 'Danne', 'Adde', 'Agge', 'Matilda','Bella','Madz','IsakMinBroder'];
+        const maxNPCs = 8;
+        const answerDuration = 3000; // 5 seconds
+        const questionDuration = 500; // 2 seconds
+        const npcLifespan = 10000; // 15 seconds
 
         const asciiArt = {
             'Tesla Model 3': 
@@ -107,7 +107,8 @@
             const canvas = createCanvas(800, 600);
             canvas.parent('gameCanvas');
             vicce = new StickFigure(width/2, height/2, 'Vicce');
-            for (let i = 0; i < maxNPCs; i++) {
+            var currentNPCs=floor(random()*maxNPCs+1)
+            for (let i = 0; i < currentNPCs; i++) {
                 spawnNewNPC();
             }
         }
@@ -161,6 +162,7 @@
                 } else {
                     this.showingQuestion = false;
                     this.questionTime = 0;
+                    this.hatStyle = 1;
                 }
             }
 
@@ -212,7 +214,25 @@
                         case 2: // Beanie
                             arc(this.x, this.y - 60, 25, 20, PI, TWO_PI);
                             break;
+                        case 3: // olles_x
+                            arc(this.x, this.y - 60, 45, 20, TWO_PI, THREE_PI);
+                            break;
                     }
+                }
+                else {
+                    switch (this.hatStyle) {
+                        case 0: // Top hat
+                            rect(this.x - 10, this.y - 70, 40, 25);
+                            line(this.x - 15, this.y - 55, this.x + 15, this.y - 55);
+                            break;
+                        case 1: // Baseball cap
+                           
+                            rect(this.x - 10, this.y - 70, 20, 15);
+                           
+                            line(this.x, this.y - 60, this.x + 15, this.y - 55);    
+                            break;
+                    }
+
                 }
                 
                 // Name
