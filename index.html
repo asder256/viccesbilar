@@ -177,6 +177,10 @@
                     if (keyIsDown(RIGHT_ARROW)) this.x += this.speed;
                     if (keyIsDown(UP_ARROW)) this.y -= this.speed;
                     if (keyIsDown(DOWN_ARROW)) this.y += this.speed;
+                    if (keyIsDown(65)) this.x -= this.speed;
+                    if (keyIsDown(68)) this.x += this.speed;
+                    if (keyIsDown(87)) this.y -= this.speed;
+                    if (keyIsDown(83)) this.y += this.speed;
                     this.x = constrain(this.x, 0, width);
                     this.y = constrain(this.y, 0, height);
                 }
